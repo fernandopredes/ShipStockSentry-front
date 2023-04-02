@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "Century Gothic";
+  src: url("../src/assets/GOTHIC.TTF");
+  src: url("../src/assets/GOTHIC.TTF") format("woff"),
+    url("../src/assets/GOTHIC.TTF") format("opentype");
+}
+
+@font-face {
+  font-family: "Century Gothic Bold";
+  src: url("../src/assets/GOTHICB.TTF");
+  src: url("../src/assets/GOTHICB.TTF") format("woff"),
+    url("../src/assets/GOTHICB.TTF") format("opentype");
+}
+
+@font-face {
+  font-family: "Century Gothic Italic";
+  src: url("../src/assets/GOTHICI.TTF");
+  src: url("../src/assets/GOTHICI.TTF") format("woff"),
+    url("../src/assets/GOTHICI.TTF.ttf") format("opentype");
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Century Gothic";
+}
+
+body{
+  background-color: #FF9534;
+}
+
+a{
+  text-decoration: none;
+}
+
+img{
+  max-width: 100%;
+  display: block;
+}
+
+.container{
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
