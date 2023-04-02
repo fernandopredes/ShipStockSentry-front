@@ -1,12 +1,15 @@
 import React from 'react'
+import Login from '../../components/Login/Login'
+
 
 type HomeProps = {}
 
 const Home = (props: HomeProps) => {
   return (
-    <div>
+    <>
       <h1>Home</h1>
-    </div>
+      <Login/>
+    </>
   )
 }
 
