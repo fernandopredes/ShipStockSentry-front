@@ -1,5 +1,6 @@
-import React from 'react'
+import DashBoard from '../../components/DashBoard/DashBoard'
 import Login from '../../components/Login/Login'
+import { HomeBackground } from './HomeStyle'
 
 
 type HomeProps = {}
@@ -7,8 +8,14 @@ type HomeProps = {}
 const Home = (props: HomeProps) => {
   return (
     <>
-      <h1>Home</h1>
-      <Login/>
+    {localStorage.token !== undefined ?
+      <DashBoard/>
+    :
+      <HomeBackground>
+        <Login/>
+      </HomeBackground>
+    }
+
     </>
   )
 }
