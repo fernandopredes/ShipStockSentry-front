@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 export const FormCard = styled.div `
   max-width: 595px;
@@ -22,8 +23,17 @@ export const FormCard = styled.div `
       text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       margin-bottom: 60px;
     }
+    label{
+      display: flex;
+      flex-direction:column;
+      span{
+        margin-bottom: 50px;
+        text-align:center;
+        color: red;
+      }
+    }
     input{
-      margin: 0px 0px 50px 0;
+      margin: 0px 0px 0px 0;
       background: #FFFFFF;
       box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.25);
       border-radius: 25px;
@@ -50,4 +60,25 @@ export const FormCard = styled.div `
     outline: none;
     }
   }
+  .buttons{
+    display: flex;
+    justify-content:space-between;
+    width: 400px;
+  }
+`
+
+export const BtnGoBack = styled(Link)`
+background: #2D412E;
+      box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.25);
+      border-radius: 25px;
+      font-family: 'Century Gothic';
+      font-weight: 700;
+      font-size: 12.8px;
+      line-height: 16px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      padding: 15px 45px;
+      border: none;
+      cursor: pointer;
 `

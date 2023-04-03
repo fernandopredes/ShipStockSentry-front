@@ -4,7 +4,9 @@ type Props = {}
 
 const Register = (props: Props) => {
   return (
+    <>
       <RegisterForm/>
+    </>
   )
 }
 

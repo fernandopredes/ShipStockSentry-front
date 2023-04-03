@@ -1,10 +1,10 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import api from '../../api'
 import axios from 'axios'
-import { FormCard } from "./RegisterFormStyle";
+import { BtnGoBack, FormCard } from "./RegisterFormStyle";
 
 type Inputs = {
   name: string;
@@ -15,7 +15,7 @@ type Inputs = {
 
 const schema = yup.object({
   name: yup.string().required('O nome de usuário é obrigatório'),
-  email: yup.string().email('Digite um e-mail válido').required('O email é obrigatório'),
+  email: yup.string().email('Digite um e-mail válido').required('O e-mail é obrigatório'),
   password: yup.string().min(8, 'A senha deve ter no mínimo 8 dígitos').required('Preencha uma senha'),
   shipName: yup.string().required('O nome do navio é obrigatório')
 }).required();
@@ -26,6 +26,8 @@ function RegisterForm() {
     resolver: yupResolver(schema)
   })
 
+  const navigate = useNavigate();
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const registerUser = async () => {
       try {
@@ -35,10 +37,12 @@ function RegisterForm() {
           password: data.password,
           ship_name: data.shipName
         })
-        console.log(res)
+
         alert('Usuário cadastrado com sucesso')
+        navigate('/')
+        window.location.reload()
       } catch (err) {
-        console.log(data)
+
         alert('houve um erro')
       }
     }
@@ -66,7 +70,10 @@ function RegisterForm() {
                 <input {...register("shipName", { required: true })} placeholder="nome do navio " />
                 <span>{errors.shipName?.message}</span>
             </label>
-            <button> Enviar </button>
+            <div className="buttons">
+              <BtnGoBack to={'/'}>voltar</BtnGoBack>
+              <button> Enviar </button>
+            </div>
         </form>
       </FormCard>
     </>
