@@ -10,7 +10,6 @@ type Inputs = {
   email: string;
   password: string;
 }
-console.log(localStorage.length === 0)
 const schema = yup.object({
   email: yup.string().email('Insira um e-mail válido').required('Preencha o campo de email'),
   password: yup.string().required('Preencha o campo de senha'),
@@ -30,7 +29,8 @@ const onSubmit: SubmitHandler<Inputs> = async (data) => {
       alert('Login bem sucedido');
 
       localStorage.setItem('token', `${String(res.data.access_token)}`)
-      console.log(res.data.access_token)
+      localStorage.setItem('user_id', `${String(res.data.user_id)}`)
+      console.log(res.data)
       console.log(data)
       navigate('/')
       window.location.reload()
