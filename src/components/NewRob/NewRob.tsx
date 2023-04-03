@@ -5,6 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup"
 import api from "../../api"
 
+import ship from "../../assets/ship.png"
+
 
 type Inputs = {
   diesel: number
@@ -18,12 +20,12 @@ type Inputs = {
 
 /* Schema para usar o hook-form e as validações com o yup */
 const schema = yup.object({
-  diesel: yup.number().round("round").required('Preencha um valor de duas casas decimais.'),
-  drillWater: yup.number().round("round").required('Preencha um valor de duas casas decimais.'),
-  freshWater: yup.number().round("round").required('Preencha um valor de duas casas decimais.'),
-  bentonite: yup.number().round("round").required('Preencha um valor de duas casas decimais.'),
-  barite: yup.number().round("round").required('Preencha um valor de duas casas decimais.'),
-  limestone: yup.number().round("round").required('Preencha um valor de duas casas decimais.')
+  diesel: yup.number().typeError('Preencha um valor numérico de até duas casas').round("round").required(),
+  drillWater: yup.number().typeError('Preencha um valor numérico de duas casas').round("round").required(),
+  freshWater: yup.number().typeError('Preencha um valor numérico de duas casas').round("round").required(),
+  bentonite: yup.number().typeError('Preencha um valor numérico de duas casas').round("round").required(),
+  barite: yup.number().typeError('Preencha um valor numérico de duas casas').round("round").required(),
+  limestone: yup.number().typeError('Preencha um valor numérico de duas casas').round("round").required()
 }).required();
 
 const NewRob = () => {
@@ -72,33 +74,50 @@ const NewRob = () => {
   return (
     <Board>
       <h2>Novo ROB</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-            <label>
-                <input {...register("diesel", { required: true })}placeholder="Insira seu diesel"  />
-                <span>{errors.diesel?.message}</span>
-            </label>
-            <label>
-                <input {...register("drillWater", { required: true })}placeholder="Insira seu drillWater"  />
-                <span>{errors.drillWater?.message}</span>
-            </label>
-            <label>
-                <input {...register("freshWater", { required: true })}placeholder="Insira seu freshWater"  />
-                <span>{errors.freshWater?.message}</span>
-            </label>
-            <label>
-                <input {...register("bentonite", { required: true })}placeholder="Insira seu bentonite"  />
-                <span>{errors.bentonite?.message}</span>
-            </label>
-            <label>
-                <input {...register("barite", { required: true })}placeholder="Insira seu barite"  />
-                <span>{errors.barite?.message}</span>
-            </label>
-            <label>
-                <input {...register("limestone", { required: true })}placeholder="Insira seu limestone"  />
-                <span>{errors.limestone?.message}</span>
-            </label>
-            <button> Enviar </button>
-          </form>
+      <div className="content">
+        <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="inputs">
+                <label>
+                    Diesel
+                    <input {...register("diesel", { required: true })}placeholder="Até duas casas decimais"  />
+                    (m³)
+                </label>
+                    <span>{errors.diesel?.message}</span>
+                <label>
+                    Drill Water
+                    <input {...register("drillWater", { required: true })}placeholder="Insira seu drillWater"  />
+                    (m³)
+                </label>
+                    <span>{errors.drillWater?.message}</span>
+                <label>
+                    Fresh Water
+                    <input {...register("freshWater", { required: true })}placeholder="Insira seu freshWater"  />
+                    (m³)
+                </label>
+                    <span>{errors.freshWater?.message}</span>
+                <label>
+                    Bentonita
+                    <input {...register("bentonite", { required: true })}placeholder="Insira seu bentonite"  />
+                    (ft³)
+                </label>
+                    <span>{errors.bentonite?.message}</span>
+                <label>
+                    Baritina
+                    <input {...register("barite", { required: true })}placeholder="Insira seu barite"  />
+                    (ft³)
+                </label>
+                    <span>{errors.barite?.message}</span>
+                <label>
+                    Calcário
+                    <input {...register("limestone", { required: true })}placeholder="Insira seu limestone"  />
+                    (ft³)
+                </label>
+                    <span>{errors.limestone?.message}</span>
+                <button> Enviar </button>
+              </div>
+            </form>
+            <img src={ship} alt="imagem de um navio verde" />
+          </div>
     </Board>
   )
 }
