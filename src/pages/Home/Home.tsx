@@ -8,8 +8,8 @@ type HomeProps = {}
 const Home = (props: HomeProps) => {
   return (
     <>
-    {localStorage.token !== undefined ?
-      <DashBoard/>
+    {localStorage.token !== undefined && localStorage.token !== "" ?
+      <DashBoard name={''} ship_name={''}/>
     :
       <HomeBackground>
         <Login/>
