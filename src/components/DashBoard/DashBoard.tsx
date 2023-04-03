@@ -5,6 +5,7 @@ import { Menu } from "./DashBoardStyle";
 import miniatura from "../../assets/miniatura.png";
 import minilogo from "../../assets/minilogo.png"
 import { useNavigate } from "react-router-dom";
+import NewRob from "../NewRob/NewRob";
 
 type User = {
   name:String
@@ -19,7 +20,7 @@ const DashBoard = (props: User) => {
   const [user, setUser] = useState<User>({ name: "", ship_name: "" });
 
   /* Seletores da parte direita do menu principal */
-  const [action, setAction] = useState<number>(2)
+  const [action, setAction] = useState<number>(1)
 
   useEffect(() => {
     /* Mostrar todos os ROBs do usuário */
@@ -79,15 +80,15 @@ const DashBoard = (props: User) => {
       </Menu>
 
       {action === 1 ?
-       <>
+       <div className="container">
         <h1>teste</h1>
-       </>
+       </div>
        : null}
 
       {action === 2 ?
-       <>
-        <h1>teste2</h1>
-       </>
+       <div className="container">
+        <NewRob/>
+       </div>
        : null}
     </>
   )

@@ -10,6 +10,8 @@ type Inputs = {
   email: string;
   password: string;
 }
+
+/* Schema para usar o hook-form e as validações com o yup */
 const schema = yup.object({
   email: yup.string().email('Insira um e-mail válido').required('Preencha o campo de email'),
   password: yup.string().required('Preencha o campo de senha'),
@@ -21,23 +23,22 @@ const Login = () => {
     resolver: yupResolver(schema)
   });
 
+  /* Hook useNavigate para recarregar a página depois de logar */
   const navigate = useNavigate();
 
-const onSubmit: SubmitHandler<Inputs> = async (data) => {
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
   try {
       const res = await api.post('/login', data);
       alert('Login bem sucedido');
 
       localStorage.setItem('token', `${String(res.data.access_token)}`)
       localStorage.setItem('user_id', `${String(res.data.user_id)}`)
-      console.log(res.data)
-      console.log(data)
+
       navigate('/')
       window.location.reload()
 
     }
       catch (error) {
-      console.log(error);
       alert('email ou senha inválidos')
     }
   }

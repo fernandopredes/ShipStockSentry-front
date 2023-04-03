@@ -5,10 +5,12 @@ export const Menu = styled.div `
 
 background: rgba(255, 255, 255, 0.25);
 height: 150px;
-
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius:0 0 25px 25px;
+margin-bottom:4rem ;
 
 .options{
-  max-width:1400px;
+  max-width:1600px;
   display: flex;
   justify-content:space-between;
   align-items:center;
@@ -17,7 +19,7 @@ height: 150px;
 
 .left-side{
   img{
-    margin-left:50px;
+    margin-right:60px;
   }
   display: flex;
   align-items:center;
@@ -39,7 +41,15 @@ height: 150px;
 
 .right-side{
   button{
-
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 29px;
+  color: #2D412E;
+  border: none;
+  background: none;
+  cursor:pointer;
+  margin-left:2rem ;
   }
 }
 `
