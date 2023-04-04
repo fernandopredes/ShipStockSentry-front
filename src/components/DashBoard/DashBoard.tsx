@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Cards, Menu } from "./DashBoardStyle";
 import miniatura from "../../assets/miniatura.png";
 import minilogo from "../../assets/minilogo.png"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NewRob from "../NewRob/NewRob";
 import Card from "../Card/Card";
 
@@ -74,9 +74,6 @@ const DashBoard = () => {
     setTimeout(() => navigate('/'), 1000)
   }
 
-  /* Variável apenas para mostrar a numeração dos cards na ordem inversa. */
-  let total = dailyRecord.length+1
-
   return (
     <>
       <Menu>
@@ -102,12 +99,14 @@ const DashBoard = () => {
           {/* Invertendo o array de ROB's para aparecer do último até o primeiro e usando o .map */}
           {dailyRecord.reverse().map((record, index)=>(
             <li>
-              <Card
-                key={index}
-                id={total-=1}
-                ship={user.ship_name}
-                date={record.date}
-              />
+              <Link to={`/${record.id}`}>
+                <Card
+                  key={index}
+                  id={record.id}
+                  ship={user.ship_name}
+                  date={record.date}
+                />
+              </Link >
             </li>
           ))}
         </ul>

@@ -68,17 +68,17 @@ export const FormCard = styled.div `
 `
 
 export const BtnGoBack = styled(Link)`
-background: #2D412E;
-      box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.25);
-      border-radius: 25px;
-      font-family: 'Century Gothic';
-      font-weight: 700;
-      font-size: 12.8px;
-      line-height: 16px;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-      padding: 15px 45px;
-      border: none;
-      cursor: pointer;
+  background: #2D412E;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  font-family: 'Century Gothic';
+  font-weight: 700;
+  font-size: 12.8px;
+  line-height: 16px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  padding: 15px 45px;
+  border: none;
+  cursor: pointer;
 `
