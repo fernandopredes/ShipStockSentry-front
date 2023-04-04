@@ -1,6 +1,6 @@
 import { Board } from "./EditRobStyle"
 import { useForm, SubmitHandler } from "react-hook-form"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup"
 import api from "../../api"
@@ -54,6 +54,7 @@ const schema = yup.object({
 
 const EditRob = () => {
 
+  const { id } = useParams();
   const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>({
     resolver: yupResolver(schema)
   });
@@ -61,13 +62,11 @@ const EditRob = () => {
   /* Hook para recarregar depois de fazer o post do ROB */
   const navigate = useNavigate();
 
-  /* Função para realizar o POST do ROB */
+  /* Função para realizar o PUT do ROB */
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
         /* Pegar o token do local storage */
         const token = localStorage.getItem('token')
-        /* Pegar o id do local storage e transformar em número*/
-        const userId = Number(localStorage.getItem('user_id'))
         /* Definir a variável data com os itens que precisam ser passados */
         const dataWithUserId = {
           diesel: data.diesel,
@@ -76,10 +75,9 @@ const EditRob = () => {
           bentonite: data.bentonite,
           barite: data.barite,
           limestone: data.limestone,
-          user_id: userId
         }
         /* Enviar data(com o user_id) e o token no header */
-        const res = await api.post('/daily_record', dataWithUserId, {
+        const res = await api.put(`/daily_record/${id}`, dataWithUserId, {
             headers: {
               'Authorization': `Bearer ${token}`
             }
