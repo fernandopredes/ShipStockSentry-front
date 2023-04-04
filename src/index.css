@@ -34,6 +34,10 @@ a{
   text-decoration: none;
 }
 
+li{
+  list-style-type: none;
+}
+
 img{
   max-width: 100%;
   display: block;
@@ -44,4 +48,3 @@ img{
   width: 100%;
   margin: 0 auto;
 }
-

@@ -23,6 +23,10 @@ h2{
     display: flex;
     flex-direction:column;
     align-items:center;
+      span{
+        margin-bottom:2rem;
+        color: red;
+        }
       label{
         display: flex;
         font-style: normal;
@@ -35,7 +39,7 @@ h2{
           border:none;
           width: 200px;
           padding: 5px 0px 5px 15px;
-          margin:0 0.5rem 3rem 0.5rem;
+          margin:0 0.5rem 0 0.5rem;
         }
         input:focus {
         outline: none;
