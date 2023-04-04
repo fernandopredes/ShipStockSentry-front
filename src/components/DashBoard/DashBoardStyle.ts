@@ -53,3 +53,13 @@ margin-bottom:4rem ;
   }
 }
 `
+
+export const Cards = styled.div `
+ul{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+`

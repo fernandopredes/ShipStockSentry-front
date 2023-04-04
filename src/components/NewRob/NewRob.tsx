@@ -54,7 +54,7 @@ const NewRob = () => {
           limestone: data.limestone,
           user_id: userId
         }
-        /* Enviar data e o token no header */
+        /* Enviar data(com o user_id) e o token no header */
         const res = await api.post('/daily_record', dataWithUserId, {
             headers: {
               'Authorization': `Bearer ${token}`
@@ -79,31 +79,31 @@ const NewRob = () => {
               <div className="inputs">
                 <label>
                     Diesel
-                    <input {...register("diesel", { required: true })}placeholder="Até duas casas decimais"  />
+                    <input {...register("diesel", { required: true })}placeholder="Valor de Diesel"  />
                     (m³)
                 </label>
                     <span>{errors.diesel?.message}</span>
                 <label>
                     Drill Water
-                    <input {...register("drillWater", { required: true })}placeholder="Insira seu drillWater"  />
+                    <input {...register("drillWater", { required: true })}placeholder="Valor de DrillWater"  />
                     (m³)
                 </label>
                     <span>{errors.drillWater?.message}</span>
                 <label>
                     Fresh Water
-                    <input {...register("freshWater", { required: true })}placeholder="Insira seu freshWater"  />
+                    <input {...register("freshWater", { required: true })}placeholder="Valor de FreshWater"  />
                     (m³)
                 </label>
                     <span>{errors.freshWater?.message}</span>
                 <label>
                     Bentonita
-                    <input {...register("bentonite", { required: true })}placeholder="Insira seu bentonite"  />
+                    <input {...register("bentonite", { required: true })}placeholder="Valor de Bentonita"  />
                     (ft³)
                 </label>
                     <span>{errors.bentonite?.message}</span>
                 <label>
                     Baritina
-                    <input {...register("barite", { required: true })}placeholder="Insira seu barite"  />
+                    <input {...register("barite", { required: true })}placeholder="Valor de Baritina"  />
                     (ft³)
                 </label>
                     <span>{errors.barite?.message}</span>

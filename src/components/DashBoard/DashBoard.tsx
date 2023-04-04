@@ -1,27 +1,42 @@
 import jwt_decode from "jwt-decode";
 import api from "../../api";
 import { useEffect, useState } from "react";
-import { Menu } from "./DashBoardStyle";
+import { Cards, Menu } from "./DashBoardStyle";
 import miniatura from "../../assets/miniatura.png";
 import minilogo from "../../assets/minilogo.png"
 import { useNavigate } from "react-router-dom";
 import NewRob from "../NewRob/NewRob";
+import Card from "../Card/Card";
 
 type User = {
-  name:String
-  ship_name:String
+  name:string
+  ship_name:string
 }
 
-const DashBoard = (props: User) => {
+type DailyRecord = {
+  id:number
+  date:string
+  diesel:number
+  drill_water:number
+  fresh_water:number
+  barite:number
+  bentonite:number
+  user_id:number
+}
+
+const DashBoard = () => {
 
   /* Pegando dados do usuário da storage */
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('token')
   const id = localStorage.getItem('user_id')
-  const [user, setUser] = useState<User>({ name: "", ship_name: "" });
+  const [user, setUser] = useState<User>({ name: "", ship_name: "" })
+
+  const [dailyRecord, setDailyRecord] = useState<DailyRecord[]>([])
 
   /* Seletores da parte direita do menu principal */
   const [action, setAction] = useState<number>(1)
 
+  /* UseEffect rodando uma só vez(quando a página é carregada) */
   useEffect(() => {
     /* Mostrar todos os ROBs do usuário */
     api.get(`/user/${id}/daily_records`, {
@@ -29,8 +44,9 @@ const DashBoard = (props: User) => {
         'Authorization': `Bearer ${token}`
       }
     })
-    .then(response => {
-      console.log(response.data);
+    .then(res => {
+      setDailyRecord(res.data);
+      console.log(res.data)
     })
     .catch(error => {
       console.error(error);
@@ -42,9 +58,8 @@ const DashBoard = (props: User) => {
         'Authorization': `Bearer ${token}`
       }
     })
-    .then(response => {
-      setUser(response.data);
-      console.log(user)
+    .then(res=> {
+      setUser(res.data);
     })
     .catch(error => {
       console.error(error);
@@ -80,9 +95,15 @@ const DashBoard = (props: User) => {
       </Menu>
 
       {action === 1 ?
-       <div className="container">
-        <h1>teste</h1>
-       </div>
+       <Cards className="container">
+        <ul>
+          {dailyRecord.map((record, index)=>(
+            <li>
+              <Card key={index} id={record.id}ship={user.ship_name} date={record.date}/>
+            </li>
+          ))}
+        </ul>
+       </Cards>
        : null}
 
       {action === 2 ?
