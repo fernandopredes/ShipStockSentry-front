@@ -1,5 +1,20 @@
 import styled from "styled-components"
 
+interface FilledProps {
+  filledHeight: string
+  productType: string
+}
+
+/* Componente para poder passar o filledHeight */
+export const Filled = styled.div<FilledProps>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: ${(props) => props.filledHeight};
+  width: 100%;
+  background-color: ${(props) => props.productType};
+`;
+
 export const DetailsPage = styled.div `
 ul{
   display: grid;
@@ -41,9 +56,6 @@ ul{
         position: absolute;
         top: 0;
         left: 0;
-        height: 50%;
-        width: 100%;
-        background-color: white;
       }
     }
   }
