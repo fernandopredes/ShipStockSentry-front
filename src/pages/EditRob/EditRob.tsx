@@ -1,4 +1,4 @@
-import { Board } from "./NewRobStyle"
+import { Board } from "./EditRobStyle"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -52,7 +52,7 @@ const schema = yup.object({
           .required()
 }).required();
 
-const NewRob = () => {
+const EditRob = () => {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>({
     resolver: yupResolver(schema)
@@ -84,7 +84,7 @@ const NewRob = () => {
               'Authorization': `Bearer ${token}`
             }
         });
-        alert('ROB criado com sucesso');
+        alert('ROB atualizado com sucesso');
 
         navigate('/')
         window.location.reload()
@@ -137,13 +137,12 @@ const NewRob = () => {
                     (ft³)
                 </label>
                     <span>{errors.limestone?.message}</span>
-                <button> Enviar </button>
+                <button> Atualizar </button>
               </div>
             </form>
-            <img src={ship} alt="imagem de um navio verde" />
           </div>
     </Board>
   )
 }
 
-export default NewRob
+export default EditRob

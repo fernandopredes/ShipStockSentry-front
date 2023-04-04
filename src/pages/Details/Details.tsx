@@ -156,7 +156,7 @@ const Details = () => {
         </ul>
         <ul className='buttons'>
           <BtnGoBack to={'/'}>voltar</BtnGoBack>
-          <BtnGoBack to={'/'}>editar</BtnGoBack>
+          <BtnGoBack to={`/edit/${record.id}`}>editar</BtnGoBack>
           <BtnDelete onClick={() => {deleteDailyRecord(id)}}>deletar</BtnDelete>
         </ul>
       </GreenScreen>
