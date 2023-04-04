@@ -30,7 +30,6 @@ const DashBoard = () => {
   const token = localStorage.getItem('token')
   const id = localStorage.getItem('user_id')
   const [user, setUser] = useState<User>({ name: "", ship_name: "" })
-
   const [dailyRecord, setDailyRecord] = useState<DailyRecord[]>([])
 
   /* Seletores da parte direita do menu principal */
@@ -75,6 +74,9 @@ const DashBoard = () => {
     setTimeout(() => navigate('/'), 1000)
   }
 
+  /* Variável apenas para mostrar a numeração dos cards na ordem inversa. */
+  let total = dailyRecord.length+1
+
   return (
     <>
       <Menu>
@@ -97,9 +99,15 @@ const DashBoard = () => {
       {action === 1 ?
        <Cards className="container">
         <ul>
-          {dailyRecord.map((record, index)=>(
+          {/* Invertendo o array de ROB's para aparecer do último até o primeiro e usando o .map */}
+          {dailyRecord.reverse().map((record, index)=>(
             <li>
-              <Card key={index} id={record.id}ship={user.ship_name} date={record.date}/>
+              <Card
+                key={index}
+                id={total-=1}
+                ship={user.ship_name}
+                date={record.date}
+              />
             </li>
           ))}
         </ul>
