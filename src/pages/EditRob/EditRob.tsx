@@ -6,12 +6,24 @@ import * as yup from "yup"
 import api from "../../api"
 
 import ship from "../../assets/ship.png"
+import { BtnGoBack } from "../../components/RegisterForm/RegisterFormStyle"
+import { useEffect, useState } from "react"
 
 
 type Inputs = {
   diesel: number
   drillWater: number
   freshWater: number
+  bentonite: number
+  barite: number
+  limestone:number
+  userId: number
+}
+
+type Default = {
+  diesel: number
+  drill_water: number
+  fresh_water: number
   bentonite: number
   barite: number
   limestone:number
@@ -54,10 +66,26 @@ const schema = yup.object({
 
 const EditRob = () => {
 
-  const { id } = useParams();
+  const { id } = useParams()
+  const [dailyRecords, setDailyRecords] = useState<Default>()
   const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>({
     resolver: yupResolver(schema)
   });
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    api.get(`/daily_record/${id}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(res => {
+      setDailyRecords(res.data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  }, []);
 
   /* Hook para recarregar depois de fazer o post do ROB */
   const navigate = useNavigate();
@@ -84,7 +112,7 @@ const EditRob = () => {
         });
         alert('ROB atualizado com sucesso');
 
-        navigate('/')
+        navigate(`/${id}`)
         window.location.reload()
 
       }
@@ -101,40 +129,41 @@ const EditRob = () => {
               <div className="inputs">
                 <label>
                     Diesel
-                    <input {...register("diesel", { required: true })}placeholder="Valor de Diesel"  />
+                    <input {...register("diesel", { required: true })}placeholder="Valor de Diesel" defaultValue={dailyRecords?.diesel} />
                     (m³)
                 </label>
                     <span>{errors.diesel?.message}</span>
                 <label>
                     Drill Water
-                    <input {...register("drillWater", { required: true })}placeholder="Valor de DrillWater"  />
+                    <input {...register("drillWater", { required: true })}placeholder="Valor de DrillWater"defaultValue={dailyRecords?.drill_water}  />
                     (m³)
                 </label>
                     <span>{errors.drillWater?.message}</span>
                 <label>
                     Fresh Water
-                    <input {...register("freshWater", { required: true })}placeholder="Valor de FreshWater"  />
+                    <input {...register("freshWater", { required: true })}placeholder="Valor de FreshWater" defaultValue={dailyRecords?.fresh_water} />
                     (m³)
                 </label>
                     <span>{errors.freshWater?.message}</span>
                 <label>
                     Bentonita
-                    <input {...register("bentonite", { required: true })}placeholder="Valor de Bentonita"  />
+                    <input {...register("bentonite", { required: true })}placeholder="Valor de Bentonita" defaultValue={dailyRecords?.bentonite} />
                     (ft³)
                 </label>
                     <span>{errors.bentonite?.message}</span>
                 <label>
                     Baritina
-                    <input {...register("barite", { required: true })}placeholder="Valor de Baritina"  />
+                    <input {...register("barite", { required: true })}placeholder="Valor de Baritina" defaultValue={dailyRecords?.barite} />
                     (ft³)
                 </label>
                     <span>{errors.barite?.message}</span>
                 <label>
                     Calcário
-                    <input {...register("limestone", { required: true })}placeholder="Insira seu limestone"  />
+                    <input {...register("limestone", { required: true })}placeholder="Insira seu limestone" defaultValue={dailyRecords?.limestone} />
                     (ft³)
                 </label>
                     <span>{errors.limestone?.message}</span>
+                <BtnGoBack to={`/${id}`}>voltar</BtnGoBack>
                 <button> Atualizar </button>
               </div>
             </form>
