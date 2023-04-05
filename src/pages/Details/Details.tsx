@@ -35,9 +35,6 @@ const Details = () => {
 
 
   useEffect(() => {
-
-
-    return () => {
       api.get(`/daily_record/${id}`, {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -50,7 +47,6 @@ const Details = () => {
       .catch(error => {
         console.error(error);
       });
-    }
   }, [])
 
   /* Função de deletar ROB */
