@@ -123,7 +123,7 @@ const EditRob = () => {
 
   return (
     <Board>
-      <h2>Novo ROB</h2>
+      <h2>Editar ROB de número {id}</h2>
       <div className="content">
         <form onSubmit={handleSubmit(onSubmit)}>
               <div className="inputs">
@@ -159,10 +159,12 @@ const EditRob = () => {
                     <span>{errors.barite?.message}</span>
                 <label>
                     Calcário
-                    <input {...register("limestone", { required: true })}placeholder="Insira seu limestone" defaultValue={dailyRecords?.limestone} />
+                    <input {...register("limestone", { required: true })}placeholder="Valor de limestone" defaultValue={dailyRecords?.limestone} />
                     (ft³)
                 </label>
                     <span>{errors.limestone?.message}</span>
+              </div>
+              <div className="btns">
                 <BtnGoBack to={`/${id}`}>voltar</BtnGoBack>
                 <button> Atualizar </button>
               </div>
