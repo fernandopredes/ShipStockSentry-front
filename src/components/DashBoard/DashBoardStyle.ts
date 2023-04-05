@@ -63,3 +63,11 @@ ul{
   margin-bottom: 50px;
 }
 `
+export const NoContent= styled.div `
+span{
+  margin-top:20vh;
+  display: block;
+  text-align:center;
+  font-size:36px
+}
+`
