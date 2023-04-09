@@ -99,4 +99,9 @@ export const BtnDelete = styled.button`
   padding: 15px 45px;
   border: none;
   cursor: pointer;
+  transition: background-color 0.5s ease;
+  :hover {
+  background-color: white;
+  color: red;
+  }
 `

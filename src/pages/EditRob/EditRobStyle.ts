@@ -40,6 +40,10 @@ h2{
       color: #FFFFFF;
       max-width:165px;
       padding: 15px 25px;
+      transition: background-color 0.5s ease;
+    }
+    button:hover {
+    background-color: #182419;
     }
   .inputs{
     display: flex;

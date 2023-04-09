@@ -60,6 +60,10 @@ h2{
       color: #FFFFFF;
       max-width:165px;
       padding: 13px 48px;
+      transition: background-color 0.5s ease;
+    }
+    button:hover {
+    background-color: #182419;
     }
   }
 }

@@ -39,6 +39,29 @@ margin-bottom:4rem ;
   }
 }
 
+.btn{
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  right: 0%;
+  height: 2px;
+  width: 0;
+  background-image: linear-gradient(to left, #2D412E, #2D412E);
+  transition: width 0.3s ease;
+}
+
+.btn:hover::before {
+  width: 100%;
+}
+
 .right-side{
   button{
   font-style: normal;
