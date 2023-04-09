@@ -86,9 +86,9 @@ const DashBoard = () => {
             </div>
           </div>
           <div className="right-side">
-            <button onClick={() => {setAction(1)}}>Dashboard</button>
-            <button onClick={() => {setAction(2)}}>Novo ROB</button>
-            <button onClick={() => {deslogar()}}>Logout</button>
+            <button onClick={() => {setAction(1)}} className="btn">Dashboard</button>
+            <button onClick={() => {setAction(2)}} className="btn">Novo ROB</button>
+            <button onClick={() => {deslogar()}} className="btn">Logout</button>
           </div>
         </div>
       </Menu>

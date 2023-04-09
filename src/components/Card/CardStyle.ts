@@ -11,6 +11,11 @@ export const CardStyle = styled.div `
   justify-content:space-around;
   align-items:center;
   cursor: pointer;
+  position: relative;
+  transition: background-color 0.5s ease;
+  :hover {
+  background-color: #b4e6aa;
+  }
   h3{
     font-style: normal;
     font-weight: 700;

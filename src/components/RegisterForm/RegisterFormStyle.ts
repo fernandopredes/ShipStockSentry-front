@@ -81,4 +81,8 @@ export const BtnGoBack = styled(Link)`
   padding: 15px 45px;
   border: none;
   cursor: pointer;
+  transition: background-color 0.5s ease;
+  :hover {
+  background-color: #182419;
+  }
 `
