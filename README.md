@@ -19,6 +19,7 @@ O back-end da aplicação pode ser encontrado no seguinte repositório: https://
 
 Para usar o Ship Stock Sentry front-end localmente, siga estes passos:
 
+Requer o [Node.js](https://nodejs.org/) instalado para rodar.
 1. Clone o repositório para a sua máquina.
 2. Entre na pasta do repositório e Instale as dependências necessárias:
 ```sh
