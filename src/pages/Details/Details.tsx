@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import api from '../../api';
 import { BtnDelete, DetailsPage, Filled, GreenScreen } from './DetailsStyle';
 import { BtnGoBack } from '../../components/RegisterForm/RegisterFormStyle';
+import moment from 'moment';
 
 
 type DailyRecord = {
@@ -96,10 +97,13 @@ const Details = () => {
   const limestoneRatio = record.limestone / maxLimestone;
   const limestoneFilledHeight = `${limestoneRatio * 100}%`
 
+  //modificando a data para o formato dd/mm/aaaa
+  const formattedDate = moment.utc(record.date).format('DD/MM/YYYY');
+
   return (
     <DetailsPage>
       <GreenScreen>
-        <h1>ROB - {record.date}</h1>
+        <h1>ROB - {formattedDate}</h1>
         <ul className='tanks'>
           <li>
             <span>Capacidade Máx.</span>
